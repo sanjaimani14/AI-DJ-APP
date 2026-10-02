@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/crates/tauri-cli/schema.json",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:5173",
+    "distDir": "../frontend/dist"
+  },
+  "package": {
+    "productName": "AI DJ",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "fs": {
+        "all": true,
+        "scope": ["$AUDIO/*", "$DOWNLOAD/*"]
+      },
+      "dialog": {
+        "all": true,
+        "open": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "identifier": "com.aidj.autonomous",
+      "icon": []
+    },
+    "windows": [
+      {
+        "title": "AI DJ – Autonomous Live DJ",
+        "width": 1440,
+        "height": 920,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ]
+  }
+}

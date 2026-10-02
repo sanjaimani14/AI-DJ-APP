@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AIDecisionProtocol",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "active_deck",
+    "next_deck",
+    "next_track",
+    "transition_type",
+    "transition_bars",
+    "target_bpm",
+    "energy_target"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "integer"
+    },
+    "active_deck": {
+      "type": "string",
+      "enum": ["A", "B"]
+    },
+    "next_deck": {
+      "type": "string",
+      "enum": ["A", "B"]
+    },
+    "next_track": {
+      "type": "object",
+      "required": ["id", "title", "file_path", "bpm", "key"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "file_path": { "type": "string" },
+        "bpm": { "type": "number" },
+        "key": { "type": "string" },
+        "energy": { "type": "number" }
+      }
+    },
+    "transition_type": {
+      "type": "string",
+      "enum": [
+        "smooth_crossfade",
+        "beat_match",
+        "eq_bass_swap",
+        "filter_transition",
+        "echo_out"
+      ]
+    },
+    "transition_bars": {
+      "type": "integer"
+    },
+    "target_bpm": {
+      "type": "number"
+    },
+    "energy_target": {
+      "type": "number"
+    },
+    "fallback_strategy": {
+      "type": "string",
+      "default": "smooth_crossfade"
+    }
+  }
+}
